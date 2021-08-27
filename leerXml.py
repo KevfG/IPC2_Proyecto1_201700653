@@ -12,20 +12,22 @@ class coordenateMap:
 
 class dataMaps:
     
-    def __init__(self, nombre, iniciox, inicioy, finx, finy, mapa):
+    def __init__(self, nombre, iniciox, inicioy, finx, finy, mapa, maxY):
         self.nombre = nombre
         self.iniciox = iniciox
         self.inicioy = inicioy
         self.finx = finx
         self.finy = finy
         self.mapa = mapa
+        self.maxY = maxY
 
 
 class leerXml:
+    valorMaxY = 0
 
     def saveData():
         #file_path = FD.askopenfilename(title="Abrir")
-        xml_doc = ET.parse('archivo.xml')
+        xml_doc = ET.parse("archivo.xml")
         root = xml_doc.getroot()
 
         for branch in root:
@@ -33,12 +35,16 @@ class leerXml:
             initx = 0
             inity = 0
             endx = 0
-            endy = 0
+            endy = 0 
             le = listaEnlazada()
+            le2 = listaEnlazada()
 
             name =branch.get('nombre')
             for i in branch:
-                if i.tag == 'posicioninicio':
+                if i.tag == "dimension":
+                    for j in i:
+                        m = j.text
+                elif i.tag == 'posicioninicio':
                     for j in i:
                         if j.tag == 'x':
                             initx = j.text
@@ -55,9 +61,10 @@ class leerXml:
                     #print("x= " + i.get('x'))
                     #print("y= " + i.get('y'))
                     #print("Dato= " + i.text)
-                #le2.insertar(le)
+                    valorMaxY = int(i.get('y'))
+                le2.insertar(le)
+            #print(valorMaxY)
+            listaPrincipal.insertar(dataMaps(name, initx, inity, endx, endy, le2, valorMaxY))
+        listaPrincipal.printData()
 
-            listaPrincipal.insertar(dataMaps(name, initx, inity, endx, endy, le))
-            
 leerXml.saveData()
-listaPrincipal.printData()
