@@ -71,6 +71,8 @@ class leerXml:
             listaPrincipal.chooseList()
         if opcion == '3':
             listaPrincipal.processData()
+        if opcion == '4':
+            listaPrincipal.processData2()
 
 #esta otra madre tambien va en la lista
     def crearXml():

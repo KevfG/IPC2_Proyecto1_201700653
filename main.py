@@ -17,7 +17,7 @@ class main:
             elif seleccion == '2':
                 leerXml.saveData('3')
             elif seleccion == '3':
-                print()
+                leerXml.saveData('4')
             elif seleccion == '4':
                 main.datosEstudiante()
             elif seleccion == '5':
