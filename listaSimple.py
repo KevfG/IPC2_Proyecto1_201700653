@@ -29,6 +29,81 @@ class listaEnlazada:
             print(aux.data)
             aux = aux.next
 # -------------------------------------------Fin--------------------------------------------------
+    def processData(self):
+        aux = self.head
+
+        while aux != None:
+            print(aux.data.nombre)
+            aux = aux.next
+
+        aux = self.head
+        nombre = input("Seleccione el mapa: ")
+
+        while aux != None:
+            if nombre == aux.data.nombre:
+                aux.data.mapa.printPos2(aux.data.maxY, aux.data.nombre)
+                break
+            aux = aux.next
+
+    def printPos2(self, valor, titulo):
+        aux = self.head
+        contador = 0
+
+        while contador != 1:
+            # print(aux.data.x)
+            # print(aux.data.y)
+            aux.data.printInfo2(valor)
+            contador += 1
+            aux = aux.next
+        print()
+        contador = 0
+
+    def printInfo2(self, valor):
+        aux = self.head
+        contador = 0
+        control = 0
+        bodyDocument = ""
+        bodyAux = ''
+        while aux != None:
+            # print(aux.data.x)
+            # print(aux.data.y)
+            if valor % 2 == 0:
+                control = 1
+            else:
+                control = 2
+            # --------------------------------------------------------------------
+            if contador <= (valor + control):
+                if int(aux.data.info) >= 3:
+                    print('0', end=' | ')
+                else:
+                    print('1', end=' | ')
+                contador = contador + 1
+            else:
+                if int(aux.data.info) >= 3:
+                    print('0', end=' | ')
+                else:
+                    print('1', end=' | ')
+                print()
+                contador = 0
+            aux = aux.next
+            contador = contador + 1
+        print()
+
+    def chooseList(self):
+        aux = self.head
+
+        while aux != None:
+            print(aux.data.nombre)
+            aux = aux.next
+
+        aux = self.head
+        nombre = input("Seleccione el mapa: ")
+
+        while aux != None:
+            if nombre == aux.data.nombre:
+                aux.data.mapa.printPos(aux.data.maxY, aux.data.nombre)
+                break
+            aux = aux.next
 
     def printData(self):
         aux = self.head
