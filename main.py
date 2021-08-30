@@ -1,4 +1,5 @@
 from leerXml import leerXml
+import time
 class main:
 
     def inicio():
@@ -15,6 +16,8 @@ class main:
             if seleccion == '1':
                 leerXml.saveData('1')
             elif seleccion == '2':
+                print('procesando datos...')
+                time.sleep(1)
                 leerXml.saveData('3')
             elif seleccion == '3':
                 leerXml.saveData('4')
